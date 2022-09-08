@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="description" content="SĂN SALE THÁNG 7 - ĐẶT 1 LẦN, HƯỞNG BỘI LẦN">
+  <meta property="og:image" content="" />
+  <meta property="og:url" content="" />
+  <title>VÒNG XOAY SIÊU GIẢM</title>
+  <link href="vongxoaymayman/images/favicon.png" rel="icon">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,300' rel='stylesheet' type='text/css' />
+  <link rel="stylesheet" href="vongxoaymayman/css/typo/typo.css" />
+  <link rel="stylesheet" href="vongxoaymayman/css/hc-canvas-luckwheel.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"></script>
+  <style>
+    * {
+      font-size: 100%;
+      font-family: Open Sans !important;
+      font-style: normal;
+    }
+
+    body {
+      position: relative;
+      touch-action: none;
+      background-color: #ff6400;
+      /* background: #ffffff; */
+    }
+
+    .bg {
+      background-image: url('vongxoaymayman/images/11_08/luckywheel-02.jpg');
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center center;
+      background-attachment: fixed;
+      touch-action: none;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .bg-ref {
+      background-image: url('vongxoaymayman/images/11_08/luckywheel-02.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      touch-action: none;
+      min-width: 100%;
+      min-height: 100%;
+    }
+
+    .hc-luckywheel {
+      position: fixed;
+      /* top: 50%;
+        left: 50%; */
+      margin-top: -100px;
+      margin-left: -220px;
+      width: 400px;
+      /*Change this when change size*/
+      height: 400px;
+      /*Change this when change size*/
+      border-radius: 50%;
+      border: 16px solid #ff6400;
+      box-shadow: 0 2px 3px #333, 0 0 2px #000;
+    }
+
+    .wrapper {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: no-drop;
+      touch-action: none;
+    }
+
+    .g2j-basic-modal__section {
+      position: relative;
+      top: 50%;
+      -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+      transform: translateY(-50%);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
+      z-index: 10;
+      min-height: 100px;
+      width: calc(100% - 32px);
+      border-radius: 20px;
+    }
+
+    .g2j-basic-modal {
+      position: fixed;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 100%;
+      z-index: 20;
+      cursor: default;
+      padding-bottom: 51px;
+    }
+
+    @keyframes modal-animation {
+      0% {
+        opacity: 0;
+        scale: (0.5);
+      }
+
+      20% {
+        opacity: 0.6;
+        scale: (1);
+      }
+
+      80% {
+        opacity: 0.8;
+        scale: (1);
+      }
+
+      100% {
+        opacity: 1;
+        scale: (1);
+      }
+    }
+
+    .modal {
+      position: fixed;
+      display: block;
+      display: -ms-flexbox;
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      -ms-flex-pack: center;
+      justify-content: center;
+      margin: 0 auto;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 100;
+      overflow-x: hidden;
+      pointer-events: auto;
+      animation: modal-animation 0.3s;
+    }
+
+    .g2j-basic-modal__bg {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+    }
+
+    .g2j-direct-app-notice-modal .section-head {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 10;
+      width: auto;
+      border-bottom: none;
+    }
+
+    .g2j-basic-modal__section__head__title {
+      font-size: 2.5rem;
+      margin-right: 26px;
+    }
+
+    .g2j-basic-modal__section__head__close-btn {
+      display: flex;
+      flex: 0 0 48px;
+      width: 48px;
+      height: 48px;
+      align-items: center;
+      justify-content: center;
+      margin-left: auto;
+      cursor: pointer;
+      margin-right: 0px;
+      font-size: 2.5rem;
+    }
+
+    .g2j-basic-modal__section__head__close-btn:focus {
+      border: none;
+    }
+
+    .limit-text {
+      width: 180px;
+      max-height: 24px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      text-align: left;
+    }
+
+    .limit-line {
+      width: 185px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      line-height: 1.2;
+      -webkit-line-clamp: 2;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+    }
+
+    .g2j-basic-modal__section__head__close-btn img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .detail-btn {
+      display: flex;
+      height: 28px;
+      align-items: center;
+      background: #ff6400;
+      border-radius: 28px;
+      border: none;
+      box-shadow: -2px 8px 16px rgb(255 100 0 / 20%);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      padding: 4px 24px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .detail-btn a {
+      color: #fff;
+    }
+
+    .g2j-direct-app-notice-modal .modal-section {
+      top: 50%;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      width: calc(100% - 96px);
+      max-width: 500px;
+      min-height: auto;
+    }
+
+    .g2j-basic-modal__section__body {
+      overflow: hidden;
+    }
+
+    .g2j-direct-app-notice-modal .section-body {
+      background: #fff5ee;
+      min-height: 100%;
+      padding: 32px 16px;
+    }
+
+    .g2j-direct-app-notice-modal__img-outer {
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .g2j-direct-app-notice-modal__content--title {
+      text-align: center;
+      font-weight: 700;
+      font-size: 18px;
+      color: #fd6500;
+    }
+
+    .g2j-direct-app-notice-modal__content--first {
+      text-align: center;
+      margin: 20px 17% 16px;
+    }
+
+    .g2j-direct-app-notice-modal__content--second {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px
+    }
+
+    .g2j-direct-app-notice-modal__content--second img {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 250px;
+      height: auto;
+    }
+
+    .g2j-direct-app-notice-modal__container-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 16px;
+    }
+
+    .g2j-direct-app-notice-modal__container-group img {
+      margin-right: 8px;
+    }
+
+    .g2j-direct-app-notice-modal__btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+    }
+
+    .g2j-direct-app-notice-modal__btn-item {
+      position: relative;
+      margin-bottom: 8px;
+      flex: 0 0 50%;
+      max-width: 120px;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .g2j-direct-app-notice-modal__btn-item:before {
+      position: absolute;
+      content: "";
+      display: block;
+
+      opacity: 0;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+    }
+
+    .g2j-direct-app-notice-modal__btn-item img {
+      vertical-align: bottom;
+    }
+
+    .g2j-direct-app-notice-modal__container-group img {
+      margin-right: 8px;
+    }
+
+    .hc-luckywheel-btn:active,
+    .hc-luckywheel-btn:focus,
+    .hc-luckywheel-btn:focus-visible {
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    .hc-luckywheel-btn img:active,
+    .hc-luckywheel-btn img:focus,
+    .hc-luckywheel-btn img:focus-visible {
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    @media only screen and (max-width: 1025px) {
+      .hc-luckywheel {
+        position: fixed;
+        top: 50%;
+        /*left: 50%; */
+        margin-top: -110px;
+        margin-left: -130px;
+        width: 365px;
+        height: 365px;
+        border-radius: 50%;
+        border: 16px solid #ff6400;
+        box-shadow: 0 2px 3px #333, 0 0 2px #000;
+      }
+
+      .hc-luckywheel-item span {
+        /* width: 50px; */
+        position: relative;
+        display: block;
+        /* padding-top: 20px; */
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+        transform-origin: 50% 250px;
+        text-transform: uppercase;
+        -webkit-transform-origin: 50% 250px;
+        -ms-transform-origin: 50% 250px;
+        transform-origin: 50% 180px;
+      }
+
+      .hc-luckywheel-btn {
+        position: absolute;
+        left: 147px;
+        top: 139px;
+        width: 75px;
+        height: 75px;
+      }
+
+      .bg-ref {
+        background-image: url('vongxoaymayman/images/11_08/ref-lucky-wheel.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    }
+
+    @media only screen and (max-width: 769px) {
+      .hc-luckywheel {
+        position: fixed;
+        top: 50%;
+        /*left: 50%; */
+        margin-top: -125px;
+        margin-left: -190px;
+        width: 350px;
+        /*Change this when change size*/
+        height: 350px;
+        /*Change this when change size*/
+        border-radius: 50%;
+        border: 16px solid #ff6400;
+        box-shadow: 0 2px 3px #333, 0 0 2px #000;
+      }
+
+      .hc-luckywheel-item span {
+        /* width: 50px; */
+        position: relative;
+        display: block;
+        /* padding-top: 20px; */
+        width: 100px;
+        margin: 0 auto;
+        text-align: center;
+        transform-origin: 50% 250px;
+        text-transform: uppercase;
+        -webkit-transform-origin: 50% 250px;
+        -ms-transform-origin: 50% 250px;
+        transform-origin: 50% 172px;
+      }
+
+      .hc-luckywheel-btn {
+        position: absolute;
+        left: 143px;
+        top: 131px;
+        width: 70px;
+        height: 70px;
+      }
+
+      .hc-luckywheel-item img {
+        position: relative;
+        top: 0px;
+        left: 0px;
+        width: 90px;
+        height: 90px;
+      }
+
+      .bg {
+        background-image: url('vongxoaymayman/images/11_08/luckywheel-02-tablet.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+
+      .bg-ref {
+        background-image: url('vongxoaymayman/images/11_08/ref-lucky-wheel__tablet.jpg');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+      }
+    }
+
+    @media only screen and (max-width: 600px) {
+      .hc-luckywheel {
+        width: 350px;
+        height: 350px;
+        top: 38%;
+        /*left: 18%; */
+        margin: 0;
+        width: 300px;
+        height: 300px;
+        border: 12px solid #ff6400;
+      }
+
+      .hc-luckywheel-item img {
+        top: -5px;
+        width: 50px;
+        height: 50px;
+      }
+
+      .hc-luckywheel-item span {
+        transform-origin: 50% 150px;
+      }
+
+      .hc-luckywheel-item span p {
+        font-size: 12px;
+      }
+
+      .hc-luckywheel-btn {
+        left: 110px;
+        top: 100px;
+        width: 82px;
+        height: 80px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .hc-luckywheel-btn::after {
+        left: 3px;
+        top: -20px;
+        width: 0;
+        height: 0;
+        overflow: hidden;
+        border-width: 15px;
+      }
+
+      .swal2-title {
+        font-size: 14px;
+      }
+
+      .hc-luckywheel-item span {
+        font-size: 12px;
+        width: 80px;
+      }
+
+      .hc-luckywheel-item img {
+        position: relative;
+        top: 7px;
+        left: 0px;
+        width: 67px;
+        height: 66px;
+      }
+
+      /*Change this when change size*/
+    }
+
+    @media only screen and (max-width: 540px) {
+      .hc-luckywheel {
+        top: 37%;
+        /*left: 10.5%; */
+        margin: 0;
+        width: 300px;
+        height: 300px;
+        border: 12px solid #ff6400;
+
+      }
+
+      .hc-luckywheel-item span {
+        font-size: 10px;
+      }
+
+      .hc-luckywheel-btn {
+        left: 101px;
+        top: 89px;
+        width: 100px;
+        height: 80px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .bg {
+        background-image: url('vongxoaymayman/images/07_09/luckywheel-02-mobile2.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        height: 100%;
+      }
+
+      .bg-ref {
+        background-image: url('vongxoaymayman/images/07_09/luckywheel-02-mobile2.png');
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        height: 100%;
+        background-size: cover;
+      }
+
+      .g2j-direct-app-notice-modal__content--title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fd6500;
+      }
+
+      .detail-btn {
+        font-size: 12px;
+      }
+
+      .g2j-direct-app-notice-modal__content--second img {
+        max-width: 140px;
+      }
+
+      .g2j-direct-app-notice-modal__content--second {
+        padding: 5px;
+      }
+    }
+
+    @media only screen and (max-width: 376px) {
+      .hc-luckywheel {
+        width: 300px;
+        height: 300px;
+        /* left: 7%; */
+        top: 37%;
+      }
+
+      .hc-luckywheel-btn {
+        left: 110px;
+        top: 100px;
+        width: 82px;
+        height: 80px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .g2j-direct-app-notice-modal__content--title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fd6500;
+      }
+
+      .detail-btn {
+        font-size: 12px;
+      }
+    }
+
+    @media only screen and (max-width: 321px) {
+      .hc-luckywheel {
+        width: 250px;
+        height: 250px;
+        /* left: 6.5%; */
+      }
+
+      .hc-luckywheel-btn {
+        left: 93px;
+        top: 82px;
+        width: 67px;
+        height: 67px;
+        line-height: 36px;
+        text-align: center;
+        font-size: 12px;
+      }
+
+      .hc-luckywheel-item span {
+        transform-origin: 50% 125px;
+      }
+
+      .g2j-direct-app-notice-modal__content--title {
+        text-align: center;
+        font-weight: 700;
+        font-size: 14px;
+        color: #fd6500;
+      }
+
+      .detail-btn {
+        font-size: 12px;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg" id="myModal" style="height: 110vh !important">
+  <div class="wrapper typo" id="wrapper">
+    <section id="luckywheel" class="hc-luckywheel">
+      <div class="hc-luckywheel-container">
+        <canvas class="hc-luckywheel-canvas" width="500px" height="500px">Vòng Xoay May Mắn</canvas>
+      </div>
+      <div class="hc-luckywheel-btn" href="javascript:;">
+        <img src="vongxoaymayman/images/11_08/luckywheel-09.png" />
+      </div>
+    </section>
+  </div>
+
+
+  <script>
+    const header = parseQueryString()
+    const headerFormDataGet = {
+      'Authorization': header.Token?header.Token: '',
+      'Device-Encode': header.DeviceEncode?header.DeviceEncode:'',
+      'Secret-Code': header.SecretCode?header.SecretCode: ''
+    }
+    axios.defaults.headers = headerFormDataGet
+
+    function parseQueryString() {
+      const hcLuckywheel = document.querySelector('.hc-luckywheel')
+      hcLuckywheel.style.display = "none"
+      let query = window.location.search;
+      if (!query) {
+        return
+      }
+      var urlparts = query.split('?');
+      var vars = urlparts[1].split("&");
+      var params = {};
+
+      for (var i = 0; i < vars.length; i++) {
+        var pair = vars[i].split("=");
+        var key = decodeURIComponent(pair.shift());
+        var value = decodeURIComponent(pair.join("="));
+        // If first entry with this name
+        if (typeof params[key] === "undefined") {
+          params[key] = value;
+          // If second entry with this name
+        } else if (typeof params[key] === "string") {
+          var arr = [params[key], value];
+          params[key] = arr;
+          // If third or later entry with this name
+        } else {
+          params[key].push(value);
+        }
+      }
+      return params;
+    }
+    const wrapper = document.querySelector('.wrapper')
+    wrapper.classList.add("bg-ref");
+    async function getDataFromApi() {
+      if (!header) {
+        const wrapper = document.querySelector('.wrapper')
+        wrapper.classList.add("bg-ref");
+
+      } else {
+        var result = await axios.get("https://staging-api.go2joy.vn/api/v3/mobile/reward/getPromotionLuckyWheel", {
+          name: "data"
+        }).then(function (response) {
+          if (response.data.error && response.data.error[0].code === -1) {
+            const wrapper = document.querySelector('.wrapper')
+            wrapper.classList.add("bg-ref");
+            const hcLuckywheel = document.querySelector('.hc-luckywheel')
+            hcLuckywheel.style.display = "none"
+
+            document.getElementById("myModal").innerHTML += `<div class="modal" id="myModal-down-app">
+                <div class="g2j-basic-modal g2j-direct-app-notice-modal">
+                  <div class="g2j-basic-modal__bg modal-bg"> </div>
+                  <div class="g2j-basic-modal__section modal-section">
+                    <div class="g2j-basic-modal__section__head section-head">
+                      <div class="g2j-basic-modal__section__head__title head-title"> </div>
+                      <div class="g2j-basic-modal__section__head__close-btn close">
+                        <span class="close " data-dismiss="modal">
+
+                        </span>
+                      </div>
+                    </div>
+                    <div class="g2j-basic-modal__section__body section-body scroll-bar-custom">
+                      <h2 class="g2j-direct-app-notice-modal__content--title" style="padding-bottom:24px">Phiên làm việc của bạn đã hết.<br> Vui lòng đăng nhập lại</h2>
+                      <div class="g2j-direct-app-notice-modal__content--second">
+                      </div>
+                      <div class="g2j-direct-app-notice-modal__btn-group">
+                        <div class="detail-btn"><a href="http://xyz.vn/expired">Ok</a></div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+              </div>`;
+          } else {
+            return response.data.data
+          }
+          return response.data.data
+        })
+
+        if (result.numberOfTurns === 0) {
+
+          const wrapper = document.querySelector('.wrapper')
+          wrapper.classList.add("bg-ref");
+          const hcLuckywheel = document.querySelector('.hc-luckywheel')
+          hcLuckywheel.style.display = "none"
+
+          document.getElementById("myModal").innerHTML += `<div class="modal" id="myModal-down-app">
+                <div class="g2j-basic-modal g2j-direct-app-notice-modal">
+                    <div class="g2j-basic-modal__bg modal-bg"> </div>
+                    <div class="g2j-basic-modal__section modal-section">
+                    <div class="g2j-basic-modal__section__head section-head">
+                        <div class="g2j-basic-modal__section__head__title head-title"> </div>
+                        <div class="g2j-basic-modal__section__head__close-btn close" >
+                                <span class="close " data-dismiss="modal">
+                                
+                                </span>
+                        </div>
+                        </div>
+                    <div class="g2j-basic-modal__section__body section-body scroll-bar-custom">
+                        <h2 class="g2j-direct-app-notice-modal__content--title" style="padding-bottom:24px">Bạn đã hết lượt quay hôm nay. Vui lòng thử lại vào ngày mai</h2>
+                        <div class="g2j-direct-app-notice-modal__content--second" > 
+                        </div>
+                          <div class="g2j-direct-app-notice-modal__btn-group">
+                            <div class="detail-btn"><a href="/back">Trở lại</a></div>      
+                          </div>
+                        </div>
+                      </div>
+                      
+                    </div>
+                </div>
+            </div>`;
+        } else {
+          const hcLuckywheel = document.querySelector('.hc-luckywheel')
+          setTimeout(hcLuckywheel.style.display = "block", 1000);
+          return result.luckyWheel
+        }
+      }
+
+      return result.luckyWheel
+    }
+    async function randomIndex(prizes) {
+      prizeIndex = await axios.get(
+      "https://staging-api.go2joy.vn/api/v3/mobile/reward/randomPromotionLuckyWheel", {
+        name: "data"
+      }).then(function (response) {
+        return response.data.data
+      })
+      var index = prizes.findIndex(item => item.sn === prizeIndex);
+      return index
+    };
+    document.addEventListener(
+      "DOMContentLoaded",
+      async function () {
+          var prizes = await getDataFromApi();
+          hcLuckywheel.init({
+            id: "luckywheel",
+            config: function (callback) {
+              callback &&
+                callback(prizes);
+            },
+            mode: "both",
+            getPrize: async function (callback) {
+              var rand = await randomIndex(prizes);
+              var chances = rand;
+              callback && callback([rand, chances]);
+            },
+            gotBack: function (data) {
+              const wrapper = document.querySelector('.wrapper')
+              wrapper.classList.add("bg-ref");
+              const hcLuckywheel = document.querySelector('.hc-luckywheel')
+              hcLuckywheel.style.display = "none"
+              if (data == null) {
+                document.getElementById("myModal").innerHTML += `<div class="modal" id="myModal-down-app">
+                <div class="g2j-basic-modal g2j-direct-app-notice-modal">
+                    <div class="g2j-basic-modal__bg modal-bg"> </div>
+                    <div class="g2j-basic-modal__section modal-section">
+                    <div class="g2j-basic-modal__section__head section-head">
+                        <div class="g2j-basic-modal__section__head__title head-title"> </div>
+                          <div class="g2j-basic-modal__section__head__close-btn close" >
+                            <span class="close " data-dismiss="modal">
+                            </span>
+                          </div>
+                        </div>
+                    <div class="g2j-basic-modal__section__body section-body scroll-bar-custom">
+                        <h2 class="g2j-direct-app-notice-modal__content--title">Chương trình đã kết thúc</h2>
+                        <div class="g2j-direct-app-notice-modal__container-group">
+                        <div class="g2j-direct-app-notice-modal__btn-group">
+                            <div class="detail-btn"><a href="/back">Trở lại</a></div>      
+                          </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </div>`;
+              } else if (data.sn === 22) {
+                document.getElementById("myModal").innerHTML += `<div class="modal" id="myModal-down-app">
+                <div class="g2j-basic-modal g2j-direct-app-notice-modal">
+                    <div class="g2j-basic-modal__bg modal-bg"> </div>
+                    <div class="g2j-basic-modal__section modal-section">
+                    <div class="g2j-basic-modal__section__head section-head">
+                        <div class="g2j-basic-modal__section__head__title head-title"> </div>
+                    </div>
+                    <div class="g2j-basic-modal__section__body section-body scroll-bar-custom">
+                        <h2 class="g2j-direct-app-notice-modal__content--title" style="padding-bottom:35px">${data.text}</h2>
+                          <div class="g2j-direct-app-notice-modal__btn-group">
+                            <div class="detail-btn"><a href="/back">Trở lại</a></div>      
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                </div>`;
+              } else {
+                document.getElementById("myModal").innerHTML += `<div class="modal" id="myModal-down-app">
+                <div class="g2j-basic-modal g2j-direct-app-notice-modal">
+                    <div class="g2j-basic-modal__bg modal-bg"> </div>
+                    <div class="g2j-basic-modal__section modal-section">
+                      <div class="g2j-basic-modal__section__head section-head">
+                          <div class="g2j-basic-modal__section__head__title head-title"> </div>
+                          </div>
+                          <div class="g2j-basic-modal__section__body section-body scroll-bar-custom">
+                              <h2 class="g2j-direct-app-notice-modal__content--title">${data.text === null || data.text
+                                ==='null' ? '' : data.text}</h2>
+                              <div class="g2j-direct-app-notice-modal__content--second"> 
+                                <img src="https://staging-s3.go2joy.vn/1000w/${data.img}" />
+                              </div>
+                              <div class="g2j-direct-app-notice-modal__btn-group">
+                                <div class="detail-btn"><a href="/counpon">Trở lại</a></div>
+                              </div>
+                            </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+                </div>`;
+              }
+              // wrapper.style.display ='none'
+            }
+          });
+        },
+        false
+    );
+  </script>
+</body>
+<script src="vongxoaymayman/js/hc-canvas-luckwheel.js"></script>
+
+</html>
